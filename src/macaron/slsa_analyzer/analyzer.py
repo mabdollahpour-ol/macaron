@@ -317,9 +317,10 @@ class Analyzer:
                 status=SCMStatus.ANALYSIS_FAILED,
             )
 
+        provenance_is_verified = False
         if not provenance_payload and parsed_purl and not config.get_value("path"):
             # Try to find the provenance file for the parsed PURL.
-            provenance_payload = ProvenanceFinder().find_provenance(parsed_purl)
+            provenance_payload, provenance_is_verified = ProvenanceFinder().find_provenance(parsed_purl)
 
         # Try to extract the repository URL and commit digest from the Provenance, if it exists.
         provenance_repo_url = provenance_commit_digest = None
@@ -383,8 +384,10 @@ class Analyzer:
         analyze_ctx.dynamic_data["provenance"] = provenance_payload
         if provenance_payload:
             analyze_ctx.dynamic_data["is_inferred_prov"] = False
+            analyze_ctx.dynamic_data["provenance_verified"] = provenance_is_verified
         analyze_ctx.dynamic_data["provenance_repo_url"] = provenance_repo_url
         analyze_ctx.dynamic_data["provenance_commit_digest"] = provenance_commit_digest
+
         analyze_ctx.check_results = self.perform_checks(analyze_ctx)
 
         return Record(
