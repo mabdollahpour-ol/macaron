@@ -71,6 +71,11 @@ class ProvenanceFinder:
     def find_npm_provenance(purl: PackageURL, npm_registry: NPMRegistry) -> tuple[InTotoPayload | None, bool]:
         """Find and download the NPM based provenance for the passed PURL.
 
+        Two kinds of attestation can be retrieved from npm: "Provenance" and "Publish". The "Provenance" attestation
+         contains the important information Macaron seeks, while the "Publish" attestation is pre-verified. Comparison
+         of the signed vs unsigned at the subject level, allows the unsigned to be verified too.
+         See: https://docs.npmjs.com/generating-provenance-statements
+
         Parameters
         ----------
         purl: PackageURL
