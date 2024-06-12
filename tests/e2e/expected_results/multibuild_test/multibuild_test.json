@@ -1,20 +1,20 @@
 {
     "metadata": {
-        "timestamps": "2024-05-07 15:10:11",
+        "timestamps": "2024-06-12 22:01:52",
         "has_passing_check": true,
         "run_checks": [
             "mcn_provenance_available_1",
+            "mcn_provenance_expectation_1",
             "mcn_provenance_witness_level_one_1",
+            "mcn_infer_artifact_pipeline_1",
             "mcn_build_as_code_1",
             "mcn_provenance_derived_commit_1",
-            "mcn_provenance_level_three_1",
+            "mcn_provenance_derived_repo_1",
             "mcn_version_control_system_1",
-            "mcn_infer_artifact_pipeline_1",
             "mcn_trusted_builder_level_three_1",
             "mcn_build_script_1",
-            "mcn_build_service_1",
-            "mcn_provenance_expectation_1",
-            "mcn_provenance_derived_repo_1"
+            "mcn_provenance_level_three_1",
+            "mcn_build_service_1"
         ],
         "check_tree": {
             "mcn_provenance_available_1": {
@@ -23,6 +23,7 @@
                 "mcn_provenance_expectation_1": {}
             },
             "mcn_provenance_derived_commit_1": {},
+            "mcn_provenance_derived_repo_1": {},
             "mcn_version_control_system_1": {
                 "mcn_build_script_1": {},
                 "mcn_trusted_builder_level_three_1": {
@@ -31,13 +32,12 @@
                         "mcn_infer_artifact_pipeline_1": {}
                     }
                 }
-            },
-            "mcn_provenance_derived_repo_1": {}
+            }
         }
     },
     "target": {
         "info": {
-            "full_name": "pkg:github.com/timyarkov/multibuild_test@a8b0efe24298bc81f63217aaa84776c3d48976c5",
+            "full_name": "pkg:maven/org.example/mock_maven_proj@1.0-SNAPSHOT?type=jar",
             "local_cloned_path": "git_repos/github_com/timyarkov/multibuild_test",
             "remote_path": "https://github.com/timyarkov/multibuild_test",
             "branch": "main",
@@ -69,7 +69,7 @@
                                 "environment": {}
                             },
                             "buildConfig": {
-                                "jobID": "pretend-to-do-stuff",
+                                "jobID": "Pretend-to-do-stuff",
                                 "stepID": "",
                                 "stepName": "Publish Gradle Project"
                             },
@@ -198,10 +198,10 @@
                     "check_id": "mcn_provenance_derived_commit_1",
                     "check_description": "Check whether the commit came from provenance.",
                     "slsa_requirements": [
-                        "Security - SLSA Level 4"
+                        "Provenance conforms with expectations - SLSA Level 3"
                     ],
                     "justification": [
-                        "commit_digest: No provenance found."
+                        "Not Available."
                     ],
                     "result_type": "FAILED"
                 },
@@ -209,10 +209,10 @@
                     "check_id": "mcn_provenance_derived_repo_1",
                     "check_description": "Check whether the repo came from provenance.",
                     "slsa_requirements": [
-                        "Security - SLSA Level 4"
+                        "Provenance conforms with expectations - SLSA Level 3"
                     ],
                     "justification": [
-                        "repository_url: No provenance found."
+                        "Not Available."
                     ],
                     "result_type": "FAILED"
                 },
@@ -273,15 +273,23 @@
         }
     },
     "dependencies": {
-        "analyzed_deps": 3,
-        "unique_dep_repos": 2,
+        "analyzed_deps": 1,
+        "unique_dep_repos": 1,
         "checks_summary": [
             {
                 "check_id": "mcn_provenance_available_1",
                 "num_deps_pass": 0
             },
             {
+                "check_id": "mcn_provenance_expectation_1",
+                "num_deps_pass": 0
+            },
+            {
                 "check_id": "mcn_provenance_witness_level_one_1",
+                "num_deps_pass": 0
+            },
+            {
+                "check_id": "mcn_infer_artifact_pipeline_1",
                 "num_deps_pass": 0
             },
             {
@@ -293,16 +301,12 @@
                 "num_deps_pass": 0
             },
             {
-                "check_id": "mcn_provenance_level_three_1",
+                "check_id": "mcn_provenance_derived_repo_1",
                 "num_deps_pass": 0
             },
             {
                 "check_id": "mcn_version_control_system_1",
-                "num_deps_pass": 2
-            },
-            {
-                "check_id": "mcn_infer_artifact_pipeline_1",
-                "num_deps_pass": 0
+                "num_deps_pass": 1
             },
             {
                 "check_id": "mcn_trusted_builder_level_three_1",
@@ -310,34 +314,18 @@
             },
             {
                 "check_id": "mcn_build_script_1",
-                "num_deps_pass": 2
+                "num_deps_pass": 1
+            },
+            {
+                "check_id": "mcn_provenance_level_three_1",
+                "num_deps_pass": 0
             },
             {
                 "check_id": "mcn_build_service_1",
                 "num_deps_pass": 1
-            },
-            {
-                "check_id": "mcn_provenance_expectation_1",
-                "num_deps_pass": 0
-            },
-            {
-                "check_id": "mcn_provenance_derived_repo_1",
-                "num_deps_pass": 0
             }
         ],
         "dep_status": [
-            {
-                "id": "org.springframework.boot:spring-boot-starter-thymeleaf",
-                "description": "Analysis Completed.",
-                "report": "spring-boot-starter-thymeleaf.html",
-                "repo_url_status": "AVAILABLE"
-            },
-            {
-                "id": "org.springframework.boot:spring-boot-starter-web",
-                "description": "https://github.com/spring-projects/spring-boot is already analyzed.",
-                "report": "",
-                "repo_url_status": "DUPLICATED REPO URL"
-            },
             {
                 "id": "com.google.code.gson:gson",
                 "description": "Analysis Completed.",
